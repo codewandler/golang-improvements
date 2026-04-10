@@ -6,6 +6,9 @@
 | **Sub-area** | Bounds-check elimination (prove pass) |
 | **Origin** | NEW — independently discovered |
 | **Status** | ✅ CONFIRMED with `check_bce` + benchmark |
+| **Tested on** | go1.26.1 linux/amd64 (tip at 4478774aa2) |
+| **Lifecycle** | in-progress |
+| **Related issues** | None found (source, issue tracker, Gerrit all checked) |
 | **Difficulty** | Medium |
 | **Impact** | High — ~10% slowdown on pair-access loops, extremely common pattern |
 | **Security** | 🔍 watch area — touches prove pass (safety-proving code) |
@@ -45,4 +48,11 @@ The prove pass sees `i+1 < len(a)` but doesn't derive `i < len(a)` transitively 
 
 ## Location
 
-`src/cmd/compile/internal/ssa/prove.go` — fence-post / transitive derivation logic.
+`src/cmd/compile/internal/ssa/prove.go` — fence-post section at line ~1097.
+
+## Investigation Status
+
+See [INVESTIGATION.md](INVESTIGATION.md) for detailed analysis. The naive fix
+(adding `v > x+1 ⇒ v > x` to the fence-post switch) is correct but doesn't fire
+because `i.max` hasn't been tightened by limit propagation yet when the fence-post
+code runs. The fix needs the `update` function's internal ordering to be adjusted.
