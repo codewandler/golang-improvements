@@ -149,11 +149,18 @@ Compiler bugs can have security implications. **Every finding must be evaluated*
 | **KNOWN** | Has an existing upstream Go issue | Found via issue tracker search or source reference |
 | **KNOWN-BAD** | Known limitation in Go's test suite | Marked `// BAD` or `// known limitation` in tests |
 
-**To verify origin, you MUST do both:**
+**To verify origin, you MUST do all three:**
 1. `grep -rn 'TODO\|FIXME\|issue\|go.dev' go-src/src/cmd/compile/internal/ssa/<file>`
-2. Search the upstream tracker: `https://github.com/golang/go/issues?q=is:issue+<keywords>`
+2. Search the upstream issue tracker: `https://github.com/golang/go/issues?q=is:issue+<keywords>`
+3. Search Gerrit CLs (pending, abandoned, and merged): `https://go-review.googlesource.com/q/<keywords>+project:go`
 
-A finding is only NEW if both come up empty.
+A finding is only NEW if **all three** come up empty.
+
+> **Lesson learned (F01):** We missed a closely related Gerrit CL
+> ([736541](https://go-review.googlesource.com/c/go/+/736541)) proposing
+> similar boolean algebra rules. It received the exact pushback we later
+> got: "Does this pattern actually occur in real code?" Checking Gerrit
+> would have let us prepare real-code evidence upfront.
 
 ### Status — "Is this real?"
 
@@ -236,10 +243,11 @@ Before recording, answer **all** of these:
 
 1. **Category**: Performance, correctness, or security?
 2. **Security**: Walk the decision tree above. If it touches prove.go/nilcheck.go/escape, explain why it's safe (or not).
-3. **Origin** (two checks required):
+3. **Origin** (three checks required):
    - Source code: `grep -r 'TODO\|FIXME\|issue' go-src/src/cmd/compile/internal/ssa/<file>`
    - Issue tracker: search `https://github.com/golang/go/issues?q=<keywords>`
-   - Only mark NEW if **both** are empty.
+   - Gerrit CLs: search `https://go-review.googlesource.com/q/<keywords>+project:go`
+   - Only mark NEW if **all three** are empty.
 4. **Status**: Do you have `go tool compile` output proving it? → CONFIRMED. Otherwise → HYPOTHETICAL.
 5. **Impact**: Do you have a benchmark? If claiming High, you **must** have numbers.
 6. **Tested on**: Record exact `go version` output.
@@ -261,7 +269,7 @@ Before considering a finding complete:
 
 - [ ] `reproduce.go` compiles: `go tool compile findings/<ID>/reproduce.go`
 - [ ] Issue confirmed with diagnostic output (pasted in README)
-- [ ] Origin checked against **both** source code and issue tracker
+- [ ] Origin checked against source code, issue tracker, **and Gerrit CLs**
 - [ ] Security evaluated using the decision tree
 - [ ] `findings/README.md` updated with new row in correct section
 - [ ] No stray files outside the finding directory (no `.o`, no binaries, no loose `.go`)
