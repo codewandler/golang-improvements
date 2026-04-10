@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED |
 | **Difficulty** | Hard |
 | **Impact** | Medium — common pattern in server/handler architectures |
+| **Security** | ⚪ none |
 
 ## Problem
 

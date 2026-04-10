@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED — but Go 1.26 may already handle this |
 | **Difficulty** | Easy |
 | **Impact** | Low |
+| **Security** | ⚪ none |
 
 ## Problem
 

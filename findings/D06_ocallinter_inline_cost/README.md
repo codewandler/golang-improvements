@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED |
 | **Difficulty** | Medium |
 | **Impact** | Medium — interface-containing functions penalized even when devirtualizable |
+| **Security** | ⚪ none |
 
 ## Problem
 

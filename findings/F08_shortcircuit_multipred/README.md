@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED |
 | **Difficulty** | Medium |
 | **Impact** | Medium-High — TODO says "reasonably high impact" |
+| **Security** | ⚪ none |
 | **Related issues** | #45175, #33903, #44465 |
 
 ## Problem

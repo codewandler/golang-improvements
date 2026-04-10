@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED |
 | **Difficulty** | Hard — fundamental EA limitation |
 | **Impact** | High — causes heap allocations in common patterns |
+| **Security** | 🔍 watch area — escape analysis correctness affects stack/heap safety |
 
 ## Problem
 

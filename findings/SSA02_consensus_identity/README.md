@@ -8,6 +8,7 @@
 | **Status** | HYPOTHETICAL — needs re-verification |
 | **Difficulty** | Easy |
 | **Impact** | Low |
+| **Security** | ⚪ none |
 
 ## Problem
 

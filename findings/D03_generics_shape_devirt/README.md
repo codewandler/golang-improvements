@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED |
 | **Difficulty** | Hard |
 | **Impact** | Medium — increasingly relevant as generics adoption grows |
+| **Security** | ⚪ none |
 
 ## Problem
 

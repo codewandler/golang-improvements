@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED — workaround in place |
 | **Difficulty** | Medium |
 | **Impact** | Low — fragile workaround, not a user-visible bug |
+| **Security** | ⚠️ latent risk — fragile workaround in prove pass |
 | **Related issues** | #76060 |
 
 ## Location

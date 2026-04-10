@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED |
 | **Difficulty** | Medium |
 | **Impact** | Medium |
+| **Security** | 🔍 watch area — touches prove pass (safety-proving code) |
 
 ## Problem
 

@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED |
 | **Difficulty** | Hard |
 | **Impact** | Medium — common in SIMD-like manual unrolling |
+| **Security** | 🔍 watch area — touches prove pass (safety-proving code) |
 
 ## Problem
 

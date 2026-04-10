@@ -8,6 +8,7 @@
 | **Status** | HYPOTHETICAL |
 | **Difficulty** | Medium |
 | **Impact** | Low — rarely hit in practice |
+| **Security** | 🔍 watch area — touches prove pass (safety-proving code) |
 
 ## Location
 

@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED with `check_bce` |
 | **Difficulty** | Hard |
 | **Impact** | High — common hash table / ring buffer pattern |
+| **Security** | 🔍 watch area — touches prove pass (safety-proving code) |
 
 ## Problem
 

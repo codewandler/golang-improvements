@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED |
 | **Difficulty** | Medium |
 | **Impact** | Low-Medium — overly conservative for non-promoted methods |
+| **Security** | ⚪ none |
 | **Related issues** | #52072 |
 
 ## Problem

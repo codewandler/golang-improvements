@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED |
 | **Difficulty** | Medium |
 | **Impact** | Medium — affects `for i := uint(0); i < n; i++` loops |
+| **Security** | ⚪ none |
 | **Related issues** | #26116 |
 
 ## Problem

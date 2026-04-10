@@ -8,6 +8,7 @@
 | **Status** | HYPOTHETICAL |
 | **Difficulty** | Easy |
 | **Impact** | Low — only large switch statements |
+| **Security** | ⚪ none |
 
 ## Location
 

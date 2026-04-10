@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED with compiler output |
 | **Difficulty** | Easy (~30 min) |
 | **Impact** | Medium — 2 redundant instructions per pattern occurrence |
+| **Security** | ⚪ none |
 
 ## Problem
 

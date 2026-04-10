@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED |
 | **Difficulty** | Hard — requires cross-block dataflow |
 | **Impact** | Medium |
+| **Security** | ⚪ none |
 | **Related issues** | #67957, #26153 |
 
 ## Problem

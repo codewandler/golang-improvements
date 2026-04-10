@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED with `check_bce` + benchmark |
 | **Difficulty** | Medium |
 | **Impact** | High — ~10% slowdown on pair-access loops, extremely common pattern |
+| **Security** | 🔍 watch area — touches prove pass (safety-proving code) |
 
 ## Problem
 

@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED |
 | **Difficulty** | Medium |
 | **Impact** | Medium — affects any function accepting an interface parameter |
+| **Security** | ⚪ none |
 
 ## Problem
 

@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED |
 | **Difficulty** | Hard |
 | **Impact** | Low-Medium |
+| **Security** | ⚪ none |
 
 ## Problem
 

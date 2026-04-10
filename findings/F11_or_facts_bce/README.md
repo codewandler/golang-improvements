@@ -8,6 +8,7 @@
 | **Status** | ✅ CONFIRMED |
 | **Difficulty** | Hard — adding facts caused compile-time slowdown |
 | **Impact** | Medium |
+| **Security** | 🔍 watch area — touches prove pass (safety-proving code) |
 | **Related issues** | #57959 |
 
 ## Problem
