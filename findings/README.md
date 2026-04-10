@@ -61,7 +61,7 @@ Or browse **[by sub-area](#by-sub-area)** (BCE, devirt, escape, etc.) or see the
 
 | ID | Summary | Origin | Status | Impact | Difficulty |
 |----|---------|--------|--------|--------|------------|
-| [F01](F01_absorption_rules/) | Missing boolean absorption laws (2 redundant instructions) | NEW | ✅ Submitted [#78632](https://github.com/golang/go/issues/78632) | Medium | **Easy** |
+| [F01](F01_absorption_rules/) | Missing boolean absorption laws (defer bit-ops) | NEW | ✅ Submitted [#78632](https://github.com/golang/go/issues/78632) — approved | Low | **Easy** |
 | [F04](F04_unsigned_len_bce/) | Unsigned arithmetic after length check — BCE miss | NEW | ✅ | Medium | Medium |
 | [F05](F05_mul_constraint_bce/) | Multiplication constraints not tracked — BCE miss | NEW | ✅ | Medium | Hard |
 | [F07](F07_global_dse/) | Dead store elimination is basic-block-only | TODO | ✅ | Medium | Hard |
@@ -125,7 +125,7 @@ For navigating by compiler component:
 
 | ID | Summary | Category | Origin | Status | Impact | Difficulty |
 |----|---------|----------|--------|--------|--------|------------|
-| F01 | Boolean absorption rules missing | perf | NEW | ✅ [Submitted](https://github.com/golang/go/issues/78632) | Medium | Easy |
+| F01 | Boolean absorption rules missing | perf | NEW | ✅ [Submitted](https://github.com/golang/go/issues/78632) — approved | Low | Easy |
 | F02 | Modulo + fixup BCE miss | perf | TODO | ✅ | High | Hard |
 | F03 | `i+1 < len(a)` fence-post BCE miss | perf | NEW | ✅ | High | Medium |
 | F04 | Unsigned arithmetic BCE miss | perf | NEW | ✅ | Medium | Medium |
@@ -169,7 +169,7 @@ For navigating by compiler component:
 ## Recommended Priority
 
 **Quick wins** (easy, upstreamable now):
-1. ~~**F01** — 2 SSA rewrite rules~~ → **Submitted** [golang/go#78632](https://github.com/golang/go/issues/78632)
+1. ~~**F01** — 2 SSA rewrite rules~~ → **Approved** [golang/go#78632](https://github.com/golang/go/issues/78632) — submit CL via Gerrit
 
 **High-impact** (worth the effort):
 2. **F03** — 10% benchmark hit, extremely common pattern
