@@ -1,0 +1,54 @@
+goos: linux
+goarch: amd64
+pkg: bench
+cpu: Intel(R) Core(TM) i9-10900K CPU @ 3.70GHz
+BenchmarkAndAbsorb64-20       	1000000000	         1.045 ns/op
+BenchmarkAndAbsorb64-20       	1000000000	         1.049 ns/op
+BenchmarkAndAbsorb64-20       	1000000000	         1.052 ns/op
+BenchmarkAndAbsorb64-20       	1000000000	         1.034 ns/op
+BenchmarkAndAbsorb64-20       	1000000000	         1.030 ns/op
+BenchmarkAndAbsorb64-20       	1000000000	         1.059 ns/op
+BenchmarkIdentity64-20        	1000000000	         1.036 ns/op
+BenchmarkIdentity64-20        	1000000000	         1.036 ns/op
+BenchmarkIdentity64-20        	1000000000	         1.041 ns/op
+BenchmarkIdentity64-20        	1000000000	         1.032 ns/op
+BenchmarkIdentity64-20        	1000000000	         1.046 ns/op
+BenchmarkIdentity64-20        	1000000000	         1.031 ns/op
+BenchmarkOrAbsorb64-20        	1000000000	         1.031 ns/op
+BenchmarkOrAbsorb64-20        	1000000000	         1.037 ns/op
+BenchmarkOrAbsorb64-20        	1000000000	         1.051 ns/op
+BenchmarkOrAbsorb64-20        	1000000000	         1.033 ns/op
+BenchmarkOrAbsorb64-20        	1000000000	         1.055 ns/op
+BenchmarkOrAbsorb64-20        	1000000000	         1.039 ns/op
+BenchmarkAndAbsorb32-20       	1000000000	         1.037 ns/op
+BenchmarkAndAbsorb32-20       	1000000000	         1.050 ns/op
+BenchmarkAndAbsorb32-20       	1000000000	         1.034 ns/op
+BenchmarkAndAbsorb32-20       	1000000000	         1.043 ns/op
+BenchmarkAndAbsorb32-20       	1000000000	         1.040 ns/op
+BenchmarkAndAbsorb32-20       	1000000000	         1.052 ns/op
+BenchmarkIdentity32-20        	1000000000	         1.059 ns/op
+BenchmarkIdentity32-20        	1000000000	         1.054 ns/op
+BenchmarkIdentity32-20        	1000000000	         1.047 ns/op
+BenchmarkIdentity32-20        	1000000000	         1.037 ns/op
+BenchmarkIdentity32-20        	1000000000	         1.044 ns/op
+BenchmarkIdentity32-20        	1000000000	         1.053 ns/op
+BenchmarkOrAbsorb32-20        	1000000000	         1.045 ns/op
+BenchmarkOrAbsorb32-20        	1000000000	         1.044 ns/op
+BenchmarkOrAbsorb32-20        	1000000000	         1.030 ns/op
+BenchmarkOrAbsorb32-20        	1000000000	         1.042 ns/op
+BenchmarkOrAbsorb32-20        	1000000000	         1.047 ns/op
+BenchmarkOrAbsorb32-20        	1000000000	         1.061 ns/op
+BenchmarkLoopAbsorb64-20      	15975319	       227.6 ns/op
+BenchmarkLoopAbsorb64-20      	16126774	       224.2 ns/op
+BenchmarkLoopAbsorb64-20      	15705804	       226.1 ns/op
+BenchmarkLoopAbsorb64-20      	15354456	       230.2 ns/op
+BenchmarkLoopAbsorb64-20      	15806431	       226.6 ns/op
+BenchmarkLoopAbsorb64-20      	15175700	       227.2 ns/op
+BenchmarkLoopIdentity64-20    	14534947	       232.8 ns/op
+BenchmarkLoopIdentity64-20    	15012970	       230.4 ns/op
+BenchmarkLoopIdentity64-20    	15929000	       227.8 ns/op
+BenchmarkLoopIdentity64-20    	14215149	       237.7 ns/op
+BenchmarkLoopIdentity64-20    	15274671	       241.3 ns/op
+BenchmarkLoopIdentity64-20    	15672223	       242.4 ns/op
+PASS
+ok  	bench	80.277s

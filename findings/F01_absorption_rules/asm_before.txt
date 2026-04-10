@@ -1,0 +1,49 @@
+# Assembly output BEFORE fix
+# go version: go1.26.1-X:nodwarf5 linux/amd64
+# date: 2026-04-10
+# command: go tool compile -S reproduce.go
+
+## andAbsorption(x, y uint64) — returns x & (x | y)
+## size=7 bytes, 3 instructions (2 redundant)
+
+    ORQ     AX, BX          ; BX = x | y
+    ANDQ    BX, AX          ; AX = x & (x | y)  ← redundant, always == x
+    RET
+
+## orAbsorption(x, y uint64) — returns x | (x & y)
+## size=7 bytes, 3 instructions (2 redundant)
+
+    ANDQ    AX, BX          ; BX = x & y
+    ORQ     BX, AX          ; AX = x | (x & y)  ← redundant, always == x
+    RET
+
+## andAbsorption32(x, y uint32) — returns x & (x | y)
+## size=5 bytes, 3 instructions (2 redundant)
+
+    ORL     AX, BX          ; BX = x | y
+    ANDL    BX, AX          ; AX = x & (x | y)  ← redundant
+    RET
+
+## orAbsorption32(x, y uint32) — returns x | (x & y)
+## size=5 bytes, 3 instructions (2 redundant)
+
+    ANDL    AX, BX          ; BX = x & y
+    ORL     BX, AX          ; AX = x | (x & y)  ← redundant
+    RET
+
+## andAbsorptionCommuted(x, y uint64) — returns (x | y) & x
+## size=7 bytes, 3 instructions (2 redundant)
+
+    ORQ     AX, BX
+    ANDQ    BX, AX
+    RET
+
+## orAbsorptionCommuted(x, y uint64) — returns (x & y) | x
+## size=7 bytes, 3 instructions (2 redundant)
+
+    ANDQ    AX, BX
+    ORQ     BX, AX
+    RET
+
+# TOTAL: 38 bytes, 18 instructions across 6 functions
+# EXPECTED AFTER FIX: 6 bytes, 6 instructions (just RET × 6)

@@ -1,0 +1,26 @@
+cmd/compile: add boolean absorption laws to SSA rewrite rules
+
+The SSA generic rewrite rules implement DeMorgan's laws but are
+missing the closely related boolean absorption laws:
+
+  x & (x | y) == x
+  x | (x & y) == x
+
+These are fundamental boolean algebra identities (see
+https://en.wikipedia.org/wiki/Absorption_law) that hold for all
+bit patterns, all widths, signed and unsigned. Both GCC and LLVM
+recognize and optimize these patterns at -O2.
+
+Add two generic rules covering all four widths (8, 16, 32, 64).
+Commutativity of AND/OR is handled automatically by the rule
+engine, so all argument orderings are matched.
+
+The rules eliminate two redundant ALU instructions per occurrence.
+In a tight loop over 1024-element slices:
+
+  name              old ns/op  new ns/op  delta
+  LoopAbsorb64-20   441.2      226.9      -48.57%  (p=0.002, n=6)
+
+No compile-time impact (compilebench math/big: p=0.699, n=6).
+
+Fixes #78632
