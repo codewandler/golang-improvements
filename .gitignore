@@ -1,0 +1,6 @@
+*.o
+*.a
+ssa.html
+# Compiled binaries (no extension)
+findings/*/reproduce
+findings/*/bench
