@@ -1,6 +1,10 @@
 *.o
 *.a
 ssa.html
-# Compiled binaries (no extension)
+# Compiled test/benchmark binaries (extensionless)
 findings/*/reproduce
-findings/*/bench
+findings/*/bench.test
+# Go module cache created by benchmark runs
+findings/*/bench/go.mod
+findings/*/bench/go.sum
+.axon/

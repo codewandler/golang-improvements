@@ -44,9 +44,20 @@ Each finding gets a directory under `findings/` with a standardized name:
 findings/<ID>_<short_name>/
 ├── README.md       ← required: description, metadata table, reproduction, location
 ├── reproduce.go    ← required if applicable: minimal Go program demonstrating the issue
-├── bench_test.go   ← optional: benchmark proving performance impact
-└── fix.patch       ← optional: proposed patch against go-src/
+├── bench/          ← optional: benchmark proving performance impact
+│   ├── bench_test.go
+│   ├── bench_before.txt
+│   └── bench_after.txt
+├── asm_before.txt  ← optional: assembly output before fix
+├── asm_after.txt   ← optional: assembly output after fix
+└── fix.patch       ← optional: human-authored changes only (no generated code)
 ```
+
+### Patch file rules
+
+- **Include only human-authored changes** — source rules, tests, hand-written Go code.
+- **Exclude auto-generated files** — `rewritegeneric.go`, `rewriteAMD64.go`, etc. These are produced by `go generate` and should not be in the patch.
+- **Document the regeneration step** — the patch README or PLAN must say how to regenerate (e.g. `cd src/cmd/compile/internal/ssa && go generate`).
 
 ### Naming Convention
 
@@ -290,6 +301,63 @@ When running multiple sub-agents to cover different areas simultaneously:
 
 ---
 
+## Git & Upstream Setup
+
+### Remotes
+
+The `go-src/` directory has three remotes:
+
+| Remote | URL | Purpose |
+|--------|-----|--------|
+| `origin` | `git@github.com:codewandler/go.git` | Our fork — push branches here |
+| `upstream` | `https://go.googlesource.com/go` | Official Go source — pull updates |
+| `gerrit` | `https://go.googlesource.com/go` | For submitting CLs via Gerrit |
+
+### Branch Workflow
+
+```bash
+# Stay on master for reading/hunting
+cd go-src && git checkout master
+
+# Create a fix branch for a specific finding
+git checkout -b fix/F01-absorption-rules master
+# ... make changes ...
+git push origin fix/F01-absorption-rules
+
+# Sync with upstream
+git fetch upstream
+git rebase upstream/master master
+git push origin master
+```
+
+### Contributing Upstream
+
+The Go project uses **Gerrit** for code review, not GitHub PRs.
+
+**For filing bugs / proposing optimizations:**
+1. Open an issue at `https://github.com/golang/go/issues/new`
+2. Use template: title = `cmd/compile: <brief description>`
+3. Include: reproducer, compiler output, Go version, expected vs actual
+4. Link to our finding: `https://github.com/codewandler/go/tree/fix/<branch>`
+
+**For submitting code changes (CLs):**
+1. Sign the CLA: `https://cla.developers.google.com/clas`
+2. Install codereview tool: `go install golang.org/x/review/git-codereview@latest`
+3. Create a branch, make changes, then:
+   ```bash
+   cd go-src
+   git codereview change   # creates a Gerrit change
+   git codereview mail     # sends to Gerrit for review
+   ```
+4. Full guide: `https://go.dev/doc/contribute`
+
+**Practical approach — do both:**
+1. File a GitHub issue with reproducer + analysis
+2. Push fix branch to `codewandler/go` and link it in the issue
+3. If accepted conceptually, submit the CL via Gerrit
+
+---
+
 ## Useful Commands
 
 ```bash
@@ -310,10 +378,14 @@ grep -n 'pattern' go-src/src/cmd/compile/internal/ssa/generic.rules
 cd go-src && git log --oneline -20 -- src/cmd/compile/internal/ssa/prove.go
 
 # Search upstream issue tracker
-# https://github.com/golang/go/issues?q=is:issue+bounds+check+elimination
+gh issue list -R golang/go -S 'cmd/compile bounds check' --limit 10
+# or: https://github.com/golang/go/issues?q=is:issue+bounds+check+elimination
 
 # Check current Go version
 go version
+
+# Sync fork with upstream
+cd go-src && git fetch upstream && git rebase upstream/master master && git push origin master
 ```
 
 ---
